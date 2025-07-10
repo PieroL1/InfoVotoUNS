@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/HomeFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/candidatosFragment"
+        android:title="Candidatos"
+        android:icon="@drawable/ic_candidatos" />
+    <item
+        android:id="@+id/PartidosFragment"
+        android:title="Partidos"
+        android:icon="@drawable/ic_partidos" />
+    <item
+        android:id="@+id/ubicationFragment"
+        android:title="Ubicacion"
+        android:icon="@drawable/ic_ubicacion" />
+</menu>

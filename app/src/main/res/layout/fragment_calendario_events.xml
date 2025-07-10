@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.fragments.CalendarioEventsFragment">
+
+    <!-- Título arriba -->
+    <TextView
+        android:id="@+id/tvCalendarTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fechas importantes"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorPrimary"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Selector de fechas Android estándar -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:dateTextAppearance="@style/CalendarDateText"
+        android:weekDayTextAppearance="@style/CalendarWeekDayText"
+        android:layout_gravity="top"
+        android:showWeekNumber="false"
+        android:firstDayOfWeek="1"
+        android:background="?attr/colorSurface"/>
+
+    <!-- Panel de eventos del día seleccionado -->
+    <LinearLayout
+        android:id="@+id/eventDetailsPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="360dp"
+        android:padding="16dp"
+        android:background="?attr/colorSurface"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12-05-2024"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"/>
+
+        <TextView
+            android:id="@+id/tvEventList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aquí se mostrarán los eventos de la fecha seleccionada."
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+</FrameLayout>

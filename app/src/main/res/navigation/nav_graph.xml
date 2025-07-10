@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/HomeFragment">
+
+    <fragment
+        android:id="@+id/ubicationFragment"
+        android:name="com.aristidevs.infovotouns.ui.fragments.ubicationFragment"
+        android:label="fragment_ubication"
+        tools:layout="@layout/fragment_ubication" />
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.aristidevs.infovotouns.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/candidatosFragment"
+        android:name="com.aristidevs.infovotouns.ui.fragments.candidatosFragment"
+        android:label="fragment_candidatos"
+        tools:layout="@layout/fragment_candidatos" />
+    <fragment
+        android:id="@+id/PartidosFragment"
+        android:name="com.aristidevs.infovotouns.ui.fragments.PartidosFragment"
+        android:label="fragment_partidos"
+        tools:layout="@layout/fragment_partidos" />
+</navigation>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InfoVotoUNS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nameApp">InfoVotoUNS</string>
+    <string name="descripcionPartido">Promover educación de calidad, salud universal y justicia ambiental.</string>
+    <string name="clear_notifications">Limpiar notificaciones</string>
+</resources>

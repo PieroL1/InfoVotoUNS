@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.candidatoInfoDetailFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Imagen del candidato -->
+            <ImageView
+                android:id="@+id/ivFotoCandidatoInfo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_foreground"
+                android:contentDescription="Foto del candidato"
+                android:background="@drawable/circle_background" />
+
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tvNombreCandidatoInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Pérez"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Partido -->
+            <TextView
+                android:id="@+id/tvPartidoCandidatoInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Partido Esperanza"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Línea divisoria -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CACACA"
+                android:layout_marginVertical="16dp" />
+
+            <!-- Detalles personales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de nacimiento"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#424242" />
+                <TextView
+                    android:id="@+id/tvNacimientoCandidato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01/01/1980"
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profesión"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#424242" />
+                <TextView
+                    android:id="@+id/tvProfesionCandidato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Abogado"
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Formación académica"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#424242" />
+                <TextView
+                    android:id="@+id/tvFormacionCandidato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Maestría en Derecho Constitucional, Universidad X"
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trayectoria"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#424242" />
+                <TextView
+                    android:id="@+id/tvTrayectoriaCandidato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Experiencia como fiscal y profesor universitario."
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_marginBottom="16dp" />
+
+            </LinearLayout>
+
+            <!-- Botón para volver atrás -->
+            <Button
+                android:id="@+id/btnVolverInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Regresar"
+                android:backgroundTint="#3F51B5"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_primary" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
