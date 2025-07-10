@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="30dp"
             android:paddingBottom="4dp"
-            android:background="@color/purple_700"
+            android:background="@color/uns_red"
             app:title="@string/nameApp"
             app:titleCentered="true"
             app:titleTextColor="@android:color/white"
@@ -38,7 +38,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/material_dynamic_primary10"
+        android:background="@color/uns_red"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemActiveIndicatorStyle="@style/BottomNavActiveIndicator"
         app:menu="@menu/menu_botton" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

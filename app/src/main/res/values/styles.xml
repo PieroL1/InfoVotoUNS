@@ -13,5 +13,8 @@
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="BottomNavActiveIndicator" parent="">
+        <item name="android:background">@drawable/bottom_nav_active_bg</item>
+    </style>
 
 </resources>

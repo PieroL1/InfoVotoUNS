@@ -1,16 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.InfoVotoUNS" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+    <style name="Theme.InfoVotoUNS" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color (rojo UNS). -->
+        <item name="colorPrimary">@color/uns_red</item>
+        <item name="colorPrimaryVariant">@color/uns_red_dark</item>
+        <item name="colorPrimaryDark">@color/uns_red_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Secondary brand color (puedes usar el rojo claro institucional). -->
+        <item name="colorSecondary">@color/uns_red_light</item>
+        <item name="colorSecondaryVariant">@color/uns_red</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Accent color (igual que el principal para mantener identidad). -->
+        <item name="colorAccent">@color/uns_red</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/uns_red_dark</item>
+        <!-- Otros colores -->
     </style>
 </resources>
