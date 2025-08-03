@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270207359856",
+    "project_id": "infovotoapp",
+    "storage_bucket": "infovotoapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270207359856:android:34a112c1e5f43025db4db5",
+        "android_client_info": {
+          "package_name": "com.aristidevs.infovotouns"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6eAIGaIGc2OvIFfg1GKlBTAgxSL4119U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+
+
+    android:layout_margin="12dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivEvento"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Degradado encima de la imagen -->
+        <View
+            android:id="@+id/degradado"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_degradado_superior"
+            app:layout_constraintBottom_toBottomOf="@id/ivEvento"
+            app:layout_constraintStart_toStartOf="@id/ivEvento"
+            app:layout_constraintEnd_toEndOf="@id/ivEvento" />
+
+        <!-- Fecha encima de la imagen -->
+        <TextView
+            android:id="@+id/tvFechaEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="2 ago 2025"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:background="@drawable/bg_gradient"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/ivEvento"
+            app:layout_constraintStart_toStartOf="@id/ivEvento" />
+
+        <!-- Título debajo de la imagen -->
+        <TextView
+            android:id="@+id/tvTituloEvento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="Título del Evento"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222"
+            app:layout_constraintTop_toBottomOf="@id/ivEvento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

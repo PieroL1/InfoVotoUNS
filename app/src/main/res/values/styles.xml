@@ -16,5 +16,12 @@
     <style name="BottomNavActiveIndicator" parent="">
         <item name="android:background">@drawable/bottom_nav_active_bg</item>
     </style>
-
+    <style name="FullScreenDialogStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="FullScreenDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

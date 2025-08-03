@@ -1,60 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.newDetailsFragment">
-
-    <!-- Barra superior con botón de cierre y título -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarNewsDetail"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-
-
-        app:title="Noticia"
-
-        app:titleTextColor="@android:color/white" />
+    android:background="?attr/colorSurface"
+    tools:context=".View.ui.fragments.NoticiaDetailFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="?attr/actionBarSize">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!-- Imagen destacada -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- Toolbar con botón de cerrar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarNoticiaDetalle"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient"
+            android:title="Detalle de Noticia"
+            android:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_close" />
 
-            <ImageView
-                android:id="@+id/ivNewsImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_foreground"
-                android:contentDescription="Imagen de la noticia" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Texto de la noticia -->
+        <!-- Contenido -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingHorizontal="16dp">
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvNewsContent"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Aquí va la información completa de la noticia..."
-                android:textSize="16sp"
-                android:textColor="?attr/colorOnSurface" />
+                android:layout_height="wrap_content">
+
+                <!-- Imagen destacada -->
+                <ImageView
+                    android:id="@+id/imgNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="Imagen de la noticia"
+                    android:background="@color/black" />
+
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/tvNoticiaTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Título de la noticia"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/uns_red"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Info básica -->
+                <TextView
+                    android:id="@+id/tvNoticiaFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha: 01/08/2025"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvNoticiaAutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Autor: Nombre"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvNoticiaCategoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Categoría: Actualidad"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Separador -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorOutline"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Contenido -->
+                <TextView
+                    android:id="@+id/tvNoticiaContenido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aquí va el contenido completo de la noticia..."
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 </FrameLayout>

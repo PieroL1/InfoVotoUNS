@@ -7,22 +7,108 @@
 
     <fragment
         android:id="@+id/ubicationFragment"
-        android:name="com.aristidevs.infovotouns.ui.fragments.ubicationFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.ubicationFragment"
         android:label="fragment_ubication"
-        tools:layout="@layout/fragment_ubication" />
+        tools:layout="@layout/fragment_ubication" >
+        <action
+            android:id="@+id/action_ubicationFragment_to_ubicacionDetailFragment"
+            app:destination="@id/ubicacionDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.aristidevs.infovotouns.ui.fragments.HomeFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_HomeFragment_to_candidatosFragment"
+            app:destination="@id/candidatosFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_eventosFragment"
+            app:destination="@id/eventosFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_noticiasFragment"
+            app:destination="@id/noticiasFragment" />
+    </fragment>
     <fragment
         android:id="@+id/candidatosFragment"
-        android:name="com.aristidevs.infovotouns.ui.fragments.candidatosFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.candidatosFragment"
         android:label="fragment_candidatos"
-        tools:layout="@layout/fragment_candidatos" />
+        tools:layout="@layout/fragment_candidatos" >
+        <action
+            android:id="@+id/action_candidatosFragment_to_PartidosFragment"
+            app:destination="@id/PartidosFragment" />
+        <action
+            android:id="@+id/action_candidatosFragment_to_proposalsDetailFragment"
+            app:destination="@id/proposalsDetailFragment" />
+        <action
+            android:id="@+id/action_candidatosFragment_to_candidatoInfoDetailFragment"
+            app:destination="@id/candidatoInfoDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/PartidosFragment"
-        android:name="com.aristidevs.infovotouns.ui.fragments.PartidosFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.PartidosFragment"
         android:label="fragment_partidos"
-        tools:layout="@layout/fragment_partidos" />
+        tools:layout="@layout/fragment_partidos" >
+        <action
+            android:id="@+id/action_PartidosFragment_to_partidosDetailFragment"
+            app:destination="@id/partidosDetailFragment" />
+        <action
+            android:id="@+id/action_PartidosFragment_to_ubicationFragment"
+            app:destination="@id/ubicationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/partidosDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.PartidosDetailFragment"
+        android:label="PartidosDetailFragment" />
+    <dialog
+        android:id="@+id/proposalsDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.ProposalsDetailFragment"
+        android:label="fragment_proposals_detail"
+        tools:layout="@layout/fragment_proposals_detail" />
+    <dialog
+        android:id="@+id/candidatoInfoDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.candidatoInfoDetailFragment"
+        android:label="fragment_candidato_info_detail"
+        tools:layout="@layout/fragment_candidato_info_detail" />
+    <dialog
+        android:id="@+id/ubicacionDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.UbicacionDetailFragment"
+        android:label="UbicacionDetailFragment">
+        <argument
+            android:name="ubicacion"
+            app:argType="com.aristidevs.infovotouns.model.Ubicacion" />
+    </dialog>
+    <fragment
+        android:id="@+id/eventosFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.EventosFragment"
+        android:label="fragment_eventos"
+        tools:layout="@layout/fragment_eventos" >
+        <action
+            android:id="@+id/action_eventosFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/eventDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" >
+        <argument
+            android:name="evento"
+            app:argType="com.aristidevs.infovotouns.model.Evento"
+            app:nullable="false" />
+    </dialog>
+    <fragment
+        android:id="@+id/noticiasFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.NoticiasFragment"
+        android:label="fragment_noticias"
+        tools:layout="@layout/fragment_noticias" >
+        <action
+            android:id="@+id/action_noticiasFragment_to_noticiaDetailFragment"
+            app:destination="@id/noticiaDetailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/noticiaDetailFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.NoticiaDetailFragment"
+        android:label="fragment_new_details"
+        tools:layout="@layout/fragment_new_details" />
 </navigation>

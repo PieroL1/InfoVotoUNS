@@ -4,136 +4,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.candidatosFragment"
+    tools:context=".View.ui.fragments.candidatosFragment"
     android:background="#F5F5F5">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvWelcomeTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:text="Candidatos"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
 
-            <!-- Título -->
-            <TextView
-                android:id="@+id/tvWelcomeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Candidatos"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="#1A237E"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp" />
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCandidatos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
+        <ProgressBar
+            android:id="@+id/progressBarCandidatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleLarge" />
 
-            <!-- Tarjeta de Candidato -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="20dp"
-                app:cardBackgroundColor="#FFFFFF">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <!-- Imagen redonda -->
-                        <ImageView
-                            android:id="@+id/ivFotoCandidato"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_marginEnd="16dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_launcher_foreground"
-                            android:background="@drawable/circle_mask"
-                            android:contentDescription="Foto del Candidato" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvNombreCandidato"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Juan Pérez"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="#212121" />
-
-                            <TextView
-                                android:id="@+id/tvPartidoCandidato"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Partido Esperanza"
-                                android:textSize="14sp"
-                                android:textColor="#757575" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Descripción -->
-                    <TextView
-                        android:id="@+id/tvDescripcionCandidato"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Candidato con trayectoria en educación y políticas públicas."
-                        android:textSize="14sp"
-                        android:textColor="#424242"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="16dp" />
-
-                    <!-- Botones con estilo -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp">
-
-                        <Button
-                            android:id="@+id/btnInfoPersonal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Info Personal"
-                            android:textColor="#FFFFFF"
-                            android:backgroundTint="#3F51B5"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/button_primary" />
-
-                        <Button
-                            android:id="@+id/btnPropuestas"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Propuestas"
-                            android:textColor="#F0F0F0"
-                            android:background="@drawable/button_outline"
-                            android:layout_marginStart="8dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Puedes duplicar más tarjetas aquí o usar RecyclerView si es dinámico -->
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

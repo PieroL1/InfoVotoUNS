@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/uns_red_light"
-    tools:context=".ui.fragments.UbicacionDetailFragment">
+    tools:context=".View.ui.fragments.UbicacionDetailFragment">
 
+    <!-- Encabezado con Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarUbicacionDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_gradient"
+            app:title="Ubicación"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_close" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Contenido scrollable debajo del AppBar -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:padding="24dp">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="24dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,11 +51,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_foreground"
-                   />
+                    android:src="@drawable/ic_launcher_foreground" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Nombre del lugar -->
+            <!-- Nombre -->
             <TextView
                 android:id="@+id/tvLocationName"
                 android:layout_width="wrap_content"
@@ -58,7 +76,7 @@
                 android:textAlignment="center"
                 android:layout_marginBottom="24dp" />
 
-            <!-- Tarjeta de Detalles -->
+            <!-- Detalles -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,13 +106,11 @@
                         android:id="@+id/tvLocationDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Horario de atención, teléfono, punto de referencia, etc."
+                        android:text="Horario de atención, punto de referencia, etc."
                         android:textSize="15sp"
-                        android:textColor="@color/black"
-                  />
+                        android:textColor="@color/black" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
-
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

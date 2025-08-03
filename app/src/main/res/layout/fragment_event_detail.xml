@@ -5,91 +5,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
-    android:padding="16dp"
-    tools:context=".ui.fragments.EventDetailFragment">
+    tools:context=".View.ui.fragments.EventDetailFragment">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Título del evento -->
-        <TextView
-            android:id="@+id/tvEventTitle"
+        <!-- Toolbar con botón de cerrar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarEventoDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título del Evento"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorPrimary"
-            android:gravity="center"
-            android:layout_marginBottom="16dp" />
 
-        <!-- Tarjeta con detalles -->
-        <com.google.android.material.card.MaterialCardView
+            android:background="@drawable/bg_gradient"
+            android:title="Detalle del Evento"
+            android:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_close" />
+
+        <!-- Contenido del detalle -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="1dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:layout_marginBottom="24dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- Título del evento -->
                 <TextView
-                    android:id="@+id/tvEventDate"
+                    android:id="@+id/tvEventTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fecha: 12/05/2025"
-                    android:textSize="16sp"
+                    android:text="Título del Evento"
+                    android:textSize="22sp"
                     android:textStyle="bold"
+                    android:textColor="@color/uns_red"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
 
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:id="@+id/tvEventTime"
+                <!-- Tarjeta con detalles -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hora: 14:30"
-                    android:textSize="16sp"
-                   android:textColor="@color/black"
-                    android:layout_marginBottom="8dp" />
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="6dp"
+                    app:strokeColor="?attr/colorOutline"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="24dp">
 
-                <TextView
-                    android:id="@+id/tvEventLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Lugar: Auditorio Principal"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="12dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?attr/colorOutline"
-                    android:layout_marginBottom="12dp" />
+                        <TextView
+                            android:id="@+id/tvEventDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha: 12/05/2025"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:id="@+id/tvEventDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Descripción del evento con todos los detalles relevantes para el usuario."
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:lineSpacingExtra="4dp" />
+                        <TextView
+                            android:id="@+id/tvEventTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Partidos: UNP, INDEP"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/tvEventLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Categoría: Debate"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="12dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?attr/colorOutline"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvEventDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Descripción del evento con todos los detalles relevantes para el usuario."
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:lineSpacingExtra="4dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-
-
+        </ScrollView>
     </LinearLayout>
 
 </FrameLayout>

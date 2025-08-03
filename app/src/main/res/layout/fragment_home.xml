@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.HomeFragment"
+    tools:context=".View.ui.fragments.HomeFragment"
     android:padding="16dp"
     android:fitsSystemWindows="true"
     android:background="@android:color/white">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingBottom="32dp">
 
             <!-- Título Principal -->
             <TextView
@@ -24,11 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bienvenido a InfoVotoUNS"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 android:textColor="#1A237E"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="8dp" />
 
             <!-- Subtítulo -->
             <TextView
@@ -39,217 +42,65 @@
                 android:textSize="16sp"
                 android:textColor="#424242"
                 android:gravity="center"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="24dp"
+                android:paddingHorizontal="16dp" />
 
-            <!-- Card Bonita -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvInfo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvEbication"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvSettings"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvFedora"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/lINUX"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="🗳️ Próximas elecciones"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#2E7D32"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa las fechas, requisitos y novedades para las elecciones del próximo semestre en la UNS."
-                        android:textSize="15sp"
-                        android:textColor="#424242"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <!-- Footer -->
+            <!-- Eventos Section -->
             <TextView
-                android:id="@+id/tvFooter"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvEventos"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Desarrollado por Daniel Domínguez"
-                android:textColor="#9E9E9E"
-                android:textSize="12sp"
-                android:layout_marginTop="32dp"/>
+                android:text="🗳️ Eventos Electorales"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingBottom="4dp"
+                android:textSize="18sp"
+                android:textColor="#2E7D32"
+                android:layout_marginBottom="4dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="4dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragmentEventos"
+                    android:name="com.aristidevs.infovotouns.View.ui.fragments.EventosFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_eventos" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Noticias Section -->
+            <TextView
+                android:id="@+id/tvNoticias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📰 Noticias Electorales"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingBottom="4dp"
+                android:textSize="18sp"
+                android:textColor="#2E7D32"
+                android:layout_marginBottom="4dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragmentNoticias"
+                    android:name="com.aristidevs.infovotouns.View.ui.fragments.NoticiasFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_noticias" />
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
     </ScrollView>
-
-
-
 </FrameLayout>

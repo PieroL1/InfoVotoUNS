@@ -5,90 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    tools:context=".ui.fragments.PartidosFragment">
+    tools:context=".View.ui.fragments.PartidosFragment">
 
-    <ScrollView
+    <!-- Contenido principal -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:background="#F5F5F5"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvWelcomeTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:gravity="center_horizontal">
+            android:text="Partidos Políticos"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="16dp" />
 
-            <!-- Título Principal -->
-            <TextView
-                android:id="@+id/tvWelcomeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Partidos Políticos"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="#1A237E"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:textAlignment="center" />
+        <!-- Lista dinámica -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPartidos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
+    </LinearLayout>
 
-            <!-- Tarjeta de Partido -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="16dp"
-                android:backgroundTint="#FFFFFF">
+    <!-- Loader superpuesto -->
+    <RelativeLayout
+        android:id="@+id/rlBasePartidos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:gravity="center_vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.3"
+            android:background="@color/design_default_color_primary" />
 
-                    <!-- Logo del partido -->
-                    <ImageView
-                        android:id="@+id/ivLogoPartido"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        android:contentDescription="Logo Partido"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/circle_background" />
+        <ProgressBar
+            android:id="@+id/progressBarPartidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
-                    <!-- Detalles del partido -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvNombrePartido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nombre del Partido"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:textColor="#212121" />
-
-                        <TextView
-                            android:id="@+id/tvDescripcionPartido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Descripción breve del partido político."
-                            android:textSize="14sp"
-                            android:textColor="#666666"
-                            android:layout_marginTop="4dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Puedes agregar más tarjetas dinámicamente -->
-
-        </LinearLayout>
-    </ScrollView>
 </FrameLayout>
