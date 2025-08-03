@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.aristidevs.infovotouns" />
+                  <option name="mobileSdkAppId" value="1:270207359856:android:34a112c1e5f43025db4db5" />
+                  <option name="projectId" value="infovotoapp" />
+                  <option name="projectNumber" value="270207359856" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

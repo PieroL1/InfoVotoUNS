@@ -67,6 +67,12 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    // Firebase Auth (usa BOM, así que sin versión)
+    implementation("com.google.firebase:firebase-auth")
+// Google Sign-In (esto sí necesita versión explícita)
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
+
+
     // Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

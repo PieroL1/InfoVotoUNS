@@ -5,4 +5,6 @@
     <string name="nameApp">InfoVotoUNS</string>
     <string name="descripcionPartido">Promover educación de calidad, salud universal y justicia ambiental.</string>
     <string name="clear_notifications">Limpiar notificaciones</string>
+    <string name="default_web_client_id">270207359856-37bf80a6078ll7r7cnetobctkun0dc8p.apps.googleusercontent.com</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 </resources>

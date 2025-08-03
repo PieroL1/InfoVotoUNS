@@ -1,60 +1,152 @@
 package com.aristidevs.infovotouns.View.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.aristidevs.infovotouns.R
+import com.aristidevs.infovotouns.databinding.FragmentLoginBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import java.security.MessageDigest
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    // Firestore
+    private val db = FirebaseFirestore.getInstance()
+
+    // Moderno: usa ActivityResultLauncher
+    private val googleSignInLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        handleSignInResult(task)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Configura Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Configura Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
+        // Click en el botón de Google
+        binding.btnGoogleSignIn.setOnClickListener {
+            val signInIntent = googleSignInClient.signInIntent
+            googleSignInLauncher.launch(signInIntent)
+        }
+
+// ---- LOGIN MANUAL: ALUMNO + CONTRASEÑA ----
+        binding.btnLogin.setOnClickListener {
+            val codigoAlumno = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+
+            if (codigoAlumno.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            db.collection("usuarios").document(codigoAlumno).get()
+                .addOnSuccessListener { doc ->
+                    if (doc.exists()) {
+                        // <<< Cambios clave aquí
+                        val storedPasswordHash = doc.getString("contraseña")?.trim()
+                        val enteredPasswordHash = sha256(password).trim()
+                        Log.d("LoginDebug", "Ingresado: '$enteredPasswordHash' | Guardado: '$storedPasswordHash'")
+
+
+
+                        if (storedPasswordHash == enteredPasswordHash) {
+                            Toast.makeText(requireContext(), "Bienvenido/a!", Toast.LENGTH_SHORT).show()
+                            navegarAHOME()
+                        } else {
+                            Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(requireContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Error de conexión", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+
+        // Si ya hay usuario logueado con Google, salta a Home
+        auth.currentUser?.let {
+            navegarAHOME()
+        }
+    }
+
+    // Función para hashear con SHA-256
+    private fun sha256(text: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(text.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
+    private fun handleSignInResult(completedTask: com.google.android.gms.tasks.Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+            if (account != null) {
+                firebaseAuthWithGoogle(account.idToken!!)
+            }
+        } catch (e: ApiException) {
+            Toast.makeText(requireContext(), "Error al iniciar con Google", Toast.LENGTH_SHORT).show()
+            Log.w("LoginFragment", "signInResult:failed code=" + e.statusCode)
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(requireContext(), "Bienvenido/a!", Toast.LENGTH_SHORT).show()
+                    navegarAHOME()
+                } else {
+                    Toast.makeText(requireContext(), "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun navegarAHOME() {
+        findNavController().navigate(R.id.HomeFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
