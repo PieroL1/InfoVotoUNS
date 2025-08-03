@@ -69,7 +69,9 @@ dependencies {
 
     // Firebase Auth (usa BOM, así que sin versión)
     implementation("com.google.firebase:firebase-auth")
-// Google Sign-In (esto sí necesita versión explícita)
+    implementation("com.google.firebase:firebase-messaging")
+
+    // Google Sign-In (esto sí necesita versión explícita)
     implementation("com.google.android.gms:play-services-auth:21.0.0")
 
 

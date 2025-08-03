@@ -1,5 +1,7 @@
 package com.aristidevs.infovotouns.View.ui.activities
 
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +15,15 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
+import android.util.Log
+import android.Manifest
+import android.os.Build
+import androidx.activity.result.contract.ActivityResultContracts
+
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.ktx.firestore
 
 import com.aristidevs.infovotouns.model.Partido
 import com.aristidevs.infovotouns.model.Propuesta
@@ -20,6 +31,7 @@ import com.aristidevs.infovotouns.model.Candidato
 import com.aristidevs.infovotouns.model.Evento
 import com.aristidevs.infovotouns.model.Noticia
 import com.aristidevs.infovotouns.model.Usuario
+import com.aristidevs.infovotouns.network.NetworkReceiver
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -31,12 +43,65 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNav: BottomNavigationView
     private lateinit var toolbar: MaterialToolbar
     private var mostrarMenuOption: Boolean = true  // <-- Bandera
+    private var networkReceiver: NetworkReceiver? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+
+
+        // ---- Noticias ----
+        Firebase.firestore.collection("noticias")
+            .addSnapshotListener { snaps, _ ->
+                snaps?.documentChanges?.forEach { change ->
+                    if (change.type == DocumentChange.Type.ADDED) {
+                        Snackbar.make(findViewById(android.R.id.content),
+                            "📰 Nueva noticia: ${change.document["titulo"] ?: "Sin título"}",
+                            Snackbar.LENGTH_LONG).show()
+                    }
+                }
+            }
+
+        // ---- Candidatos ----
+        Firebase.firestore.collection("candidatos")
+            .addSnapshotListener { snaps, _ ->
+                snaps?.documentChanges?.forEach { change ->
+                    if (change.type == DocumentChange.Type.ADDED) {
+                        Snackbar.make(findViewById(android.R.id.content),
+                            "🧑‍💼 Nuevo candidato: ${change.document["nombre"] ?: "Sin nombre"}",
+                            Snackbar.LENGTH_LONG).show()
+                    }
+                }
+            }
+
+        // ---- Eventos ----
+        Firebase.firestore.collection("eventos")
+            .addSnapshotListener { snaps, _ ->
+                snaps?.documentChanges?.forEach { change ->
+                    if (change.type == DocumentChange.Type.ADDED) {
+                        Snackbar.make(findViewById(android.R.id.content),
+                            "📅 Nuevo evento: ${change.document["descripcion"] ?: "Sin descripción"}",
+                            Snackbar.LENGTH_LONG).show()
+                    }
+                }
+            }
+
+        // ---- Partidos ----
+        Firebase.firestore.collection("partidos")
+            .addSnapshotListener { snaps, _ ->
+                snaps?.documentChanges?.forEach { change ->
+                    if (change.type == DocumentChange.Type.ADDED) {
+                        Snackbar.make(findViewById(android.R.id.content),
+                            "🏳️ Nuevo partido: ${change.document["nombre"] ?: "Sin nombre"}",
+                            Snackbar.LENGTH_LONG).show()
+                    }
+                }
+            }
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -58,6 +123,26 @@ class MainActivity : AppCompatActivity() {
             // Solo muestro menú si no estoy en login
             mostrarMenuOption = destination.id !in fragmentsSinMenu
             invalidateOptionsMenu() // Actualizo menú de arriba
+        }
+
+        // === PEDIR PERMISO DE NOTIFICACIÓN (Android 13+) ===
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val requestPermissionLauncher = registerForActivityResult(
+                ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                // Puedes mostrar un Toast si lo deseas
+                // if (!isGranted) Toast.makeText(this, "No podrás recibir notificaciones", Toast.LENGTH_SHORT).show()
+            }
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+
+        // === OBTENER EL TOKEN FCM (opcional, solo para debug) ===
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("FCM_TOKEN", "Token: ${task.result}")
+            } else {
+                Log.e("FCM_TOKEN", "Error al obtener el token", task.exception)
+            }
         }
     }
 
@@ -94,6 +179,21 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.loginFragment)
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        networkReceiver = NetworkReceiver(this)
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkReceiver, filter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(networkReceiver)
+    }
+
+
+
 }
 
 
