@@ -142,8 +142,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun navegarAHOME() {
-        findNavController().navigate(R.id.HomeFragment)
+        findNavController().navigate(
+            R.id.HomeFragment, null,
+            androidx.navigation.NavOptions.Builder()
+                .setPopUpTo(R.id.loginFragment, true) // Borra el login del backstack
+                .build()
+        )
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

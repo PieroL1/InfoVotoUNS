@@ -155,10 +155,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_calendar -> {
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.calendarFragment)
+            true
+        }
+
         R.id.action_logout -> {
             logout()
             true
         }
+
         else -> super.onOptionsItemSelected(item)
     }
 

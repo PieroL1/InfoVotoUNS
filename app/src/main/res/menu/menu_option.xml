@@ -7,4 +7,11 @@
         android:title="@string/cerrar_sesion"
         app:showAsAction="never"
         android:icon="@drawable/ic_close" />
+
+    <item
+        android:id="@+id/action_calendar"
+        android:title="Calendario"
+        android:icon="@drawable/ic_close"
+    app:showAsAction="never" />
+
 </menu>

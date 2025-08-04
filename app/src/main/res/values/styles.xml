@@ -24,4 +24,12 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="DialogNoPadding" parent="Theme.Material3.DayNight.Dialog">
+        <item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">95%</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
 </resources>

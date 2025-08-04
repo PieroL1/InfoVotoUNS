@@ -98,16 +98,18 @@
             android:id="@+id/action_eventosFragment_to_eventDetailFragment"
             app:destination="@id/eventDetailFragment" />
     </fragment>
-    <dialog
+    <fragment
         android:id="@+id/eventDetailFragment"
         android:name="com.aristidevs.infovotouns.View.ui.fragments.EventDetailFragment"
-        android:label="fragment_event_detail"
-        tools:layout="@layout/fragment_event_detail" >
+        tools:layout="@layout/fragment_event_detail">
         <argument
             android:name="evento"
-            app:argType="com.aristidevs.infovotouns.model.Evento"
-            app:nullable="false" />
-    </dialog>
+            app:argType="com.aristidevs.infovotouns.model.Evento" />
+    </fragment>
+
+
+
+
     <fragment
         android:id="@+id/noticiasFragment"
         android:name="com.aristidevs.infovotouns.View.ui.fragments.NoticiasFragment"
@@ -122,4 +124,16 @@
         android:name="com.aristidevs.infovotouns.View.ui.fragments.NoticiaDetailFragment"
         android:label="fragment_new_details"
         tools:layout="@layout/fragment_new_details" />
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.aristidevs.infovotouns.View.ui.fragments.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+
+
 </navigation>

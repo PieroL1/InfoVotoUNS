@@ -4,65 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="@android:color/transparent"
     tools:context=".View.ui.fragments.EventDetailFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:strokeColor="@color/uns_red"
+        app:strokeWidth="2dp">
 
-        <!-- Toolbar con botón de cerrar -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarEventoDetalle"
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
 
-            android:background="@drawable/bg_gradient"
-            android:title="Detalle del Evento"
-            android:titleTextColor="@android:color/white"
-            app:navigationIcon="@drawable/ic_close" />
-
-        <!-- Contenido del detalle -->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:orientation="vertical"
+            <!-- Toolbar con botón de cerrar -->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarEventoDetalle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_gradient"
+                android:title="Detalle del Evento"
+                android:titleTextColor="@android:color/white"
+                app:navigationIcon="@drawable/ic_close"
+                app:titleCentered="true"/>
 
-                <!-- Título del evento -->
-                <TextView
-                    android:id="@+id/tvEventTitle"
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Título del Evento"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/uns_red"
-                    android:gravity="center"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_height="wrap_content">
 
+                    <!-- Título del evento -->
+                    <TextView
+                        android:id="@+id/tvEventTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Título del Evento"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/uns_red"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp" />
 
-                <!-- Tarjeta con detalles -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:strokeColor="?attr/colorOutline"
-                    app:strokeWidth="1dp"
-                    android:layout_marginBottom="24dp">
-
+                    <!-- Tarjeta con detalles -->
                     <LinearLayout
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
 
                         <TextView
                             android:id="@+id/tvEventDate"
@@ -107,9 +108,18 @@
                             android:textColor="@color/black"
                             android:lineSpacingExtra="4dp" />
                     </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAgregarCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar al Calendario"
+                android:layout_margin="16dp"
+                app:cornerRadius="32dp"
+                app:backgroundTint="@color/uns_red"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </FrameLayout>
